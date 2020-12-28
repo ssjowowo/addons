@@ -1,0 +1,51 @@
+{
+    "name": "RF Quad",
+    "version": "1.0",
+    "slug": "rfquad",
+    "description": "RF Transmitter addon for quad state commands",
+    "startup": "application",
+    "arch": ["armhf"],
+    "boot": "auto",
+    "devices": [
+		"/dev/mem:/dev/mem:rwm", 
+		"/dev/gpiomem:/dev/gpiomem:rwm"
+	],
+    "privileged": [
+		"SYS_RAWIO"
+	],
+    "gpio": "true",
+    "apparmor": false,
+    "options": {
+		"component": "cover",
+		"object_id": "blinds",
+		"operations": {
+			"open": "",
+			"close": "",
+			"stop": ""
+		},
+		"mqtt": {
+			"host": "core-mosquitto",
+			"user": "",
+			"password": ""
+		}
+	},
+	"schema": {
+		"component": "str",
+		"object_id": "str",
+		"operations": {
+			"open": "str",
+			"close": "str",
+			"stop": "str"
+		},
+		"mqtt": {
+			"host": "str",
+			"user": "str",
+			"password": "str"
+		}
+	},
+	"services": [
+		"mqtt:need"
+	],
+    "hassio_api": true,
+    "hassio_role": "default"
+} 
